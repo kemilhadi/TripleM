@@ -1,9 +1,18 @@
-# Triple M
-Measure, Make, Manage
+# Triple M - Measure, Make, Manage
+###### Unity Version 2022.3.20f1
 
 <br>
 
-## RUN
+## Build
+1. Open up Main.unity within Assets/Scenes
+2. Save any changes modified
+3. Open build settings
+4. Ensure that the platform is android and all the settings is as desired/default
+5. Build and run
+
+<br>
+
+## Run
 1. Setup spacial scan within physical space in the Quest3's settings
 2. Ensure that there is at least one "Table" furniture
     - None: Add furniture and label it as "Table"
@@ -38,3 +47,8 @@ Measure, Make, Manage
     - Create Ruler: Creates a ruler for the user to measure
     - Destroy: to remove unecessary ruler/s
 
+## Dependency
+- Sketchfab C# Plugin: https://github.com/Zoe-Immersive/SketchfabCSharp?tab=readme-ov-file
+- JSONDotNet
+- XR Interaction Toolkit: https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@3.0/manual/index.html
+- AR Foundations: https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@6.0/manual/index.html
