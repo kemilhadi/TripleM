@@ -10,7 +10,6 @@
 4. Ensure that the platform is android and all the settings is as desired/default
 5. Build and run
 
-<br>
 
 ## Run
 1. Setup spacial scan within physical space in the Quest3's settings
@@ -21,7 +20,6 @@
 4. Change to Unknown Source from All Application on Top Right Corner
 5. Open "Triple M"
 
-<br>
 
 ## Instructions
 - Selecting Objects
@@ -46,6 +44,7 @@
     - Annotate: Displays the description of the object
     - Create Ruler: Creates a ruler for the user to measure
     - Destroy: to remove unecessary ruler/s
+
 
 ## Dependency
 - Sketchfab C# Plugin: https://github.com/Zoe-Immersive/SketchfabCSharp?tab=readme-ov-file
