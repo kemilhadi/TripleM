@@ -50,10 +50,10 @@ public class WebAPI : MonoBehaviour
         // If sketchfab API is not yet finished then it will not start to download the models
         if (!isFinished)
         {
-            if (showOnlyTable.tableVector == Vector3.zero)
-            {
-                return;
-            }
+            // if (showOnlyTable.tableVector == Vector3.zero)
+            // {
+            //     return;
+            // }
 
             for (int i = 0; i < UIDList.Count; i++)
             {
@@ -180,10 +180,10 @@ public class WebAPI : MonoBehaviour
                     Vector3 newPosition = parent.position + new Vector3(0f, 0f, xPos);
                     
                     // Enable
-                    Vector3 combinedPosition = showOnlyTable.tableVector + newPosition;
+                    // Vector3 combinedPosition = showOnlyTable.tableVector + newPosition;
 
                     // Change to combinedPosition
-                    parent.position = combinedPosition;
+                    parent.position = newPosition;
                     xPos -= 1;
 
         //         }

@@ -21,7 +21,7 @@ public class Pin_Menu : MonoBehaviour
     {
         // Get the Toggle component from the annotateToggle GameObject
         toggle = pinToggle.GetComponent<Toggle>();
-        pinToggle.SetActive(false);
+        // pinToggle.SetActive(false);
     }
 
     void Update()
@@ -41,7 +41,7 @@ public class Pin_Menu : MonoBehaviour
     public void OnHoverEntered(HoverEnterEventArgs args)
     {
         currGLB = args.interactableObject.transform.gameObject;
-        pinToggle.SetActive(true);
+        // pinToggle.SetActive(true);
 
         if (!currGLB.GetComponent<Rigidbody>().isKinematic) 
         {
@@ -56,7 +56,7 @@ public class Pin_Menu : MonoBehaviour
 
     public void OnHoverExited(HoverExitEventArgs args)
     {
-        pinToggle.SetActive(false);
+        // pinToggle.SetActive(false);
         currGLB = null;
     }
  

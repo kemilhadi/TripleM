@@ -15,7 +15,7 @@ public class Destroy_Menu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        toggle = this.GetComponent<Toggle>();    
+        toggle = this.GetComponent<Toggle>();   
         gameObject.SetActive(false);
     }
 

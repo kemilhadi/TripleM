@@ -27,22 +27,24 @@ public class CollisionMenu : MonoBehaviour
     {
         // Get the Toggle component from the annotateToggle GameObject
         toggle = annotateToggle.GetComponent<Toggle>();
-        annotateToggle.SetActive(false);
+        // annotateToggle.SetActive(false);
     }
 
     public void OnHoverEntered(HoverEnterEventArgs args)
     {
         textMeshPro.text = $"{webAPI.DescriptionList[int.Parse(args.interactableObject.transform.name)]}";
-        annotateToggle.SetActive(true);
+        // annotateToggle.SetActive(true);
     }
 
     public void OnHoverExited(HoverExitEventArgs args)
     {
-        annotateToggle.SetActive(false);
+        // annotateToggle.SetActive(false);
     }
 
     void Update()
     {
+        print(toggle);
+        
         if (!toggle.isOn) {
             DescriptionUI.SetActive(false);
         } else 
