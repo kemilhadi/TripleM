@@ -26,6 +26,8 @@ public class Pin_Menu : MonoBehaviour
 
     void Update()
     {
+        if (currGLB == null) { return; }
+
         if (pinToggle.active)
         {
             if (toggle.isOn)

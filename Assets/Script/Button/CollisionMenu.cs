@@ -43,8 +43,6 @@ public class CollisionMenu : MonoBehaviour
 
     void Update()
     {
-        print(toggle);
-        
         if (!toggle.isOn) {
             DescriptionUI.SetActive(false);
         } else 

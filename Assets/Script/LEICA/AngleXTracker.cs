@@ -32,6 +32,6 @@ public class AngleXTracker : MonoBehaviour
         totalRotation += angle;
         lastPoint = facing;
 
-        print("X: " + totalRotation);
+        // print("X: " + totalRotation);
     }
 }

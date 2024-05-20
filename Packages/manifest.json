@@ -3,6 +3,7 @@
     "com.atteneder.gltfast": "https://github.com/atteneder/glTFast.git",
     "com.unity.collab-proxy": "2.2.0",
     "com.unity.feature.development": "1.0.1",
+    "com.unity.render-pipelines.universal": "14.0.10",
     "com.unity.shadergraph": "14.0.10",
     "com.unity.sketchfab": "https://github.com/Zoe-Immersive/SketchfabCSharp.git",
     "com.unity.textmeshpro": "3.0.6",

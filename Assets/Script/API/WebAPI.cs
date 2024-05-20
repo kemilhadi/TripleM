@@ -26,6 +26,8 @@ public class WebAPI : MonoBehaviour
     private List<string> UIDList = new List<string>();
     public List<string> DescriptionList = new List<string>();
 
+    private List<string> ImgURLList = new List<string>();
+
     private bool isFinished = true;
 
     // Placeholder to spread out the items on the table by xPos temporarily
@@ -36,12 +38,17 @@ public class WebAPI : MonoBehaviour
     // Reference to the TextMeshPro component
     public TextMeshProUGUI textMeshPro;
 
+
+    // BUTTON MENU REFERENCE
+    public GameObject img_Container;
+    public GameObject img_button;
+
     void Start()
     {
         // Authorize with the provided API token
         SketchfabAPI.AuthorizeWithAPIToken(APIToken);        
 
-        StartCoroutine(GetDataFromAPI());
+        StartCoroutine(GetDataFromAPI());     
 
     }
 
@@ -55,12 +62,57 @@ public class WebAPI : MonoBehaviour
             //     return;
             // }
 
+            StartCoroutine(LoadImage());
+
             for (int i = 0; i < UIDList.Count; i++)
             {
                 DownloadModel(UIDList[i], i);
             }
 
             isFinished = true;
+        }
+    }
+
+
+    private IEnumerator LoadImage()
+    {
+        foreach (string url in ImgURLList)
+        {
+            UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
+            yield return www.SendWebRequest();
+
+            if (www.result == UnityWebRequest.Result.Success)
+            {
+
+                // Instantiate the prefab
+                GameObject instantiatedButton = Instantiate(img_button);
+
+                // Set the img_Container as the parent of the plane
+                instantiatedButton.transform.SetParent(img_Container.transform);
+
+                // Set the localScale to 1f
+                instantiatedButton.transform.localScale = Vector3.one;
+
+                // Set position (assuming z position to be 0)
+                instantiatedButton.transform.localPosition = Vector3.zero;
+
+                // Set rotation to 0
+                instantiatedButton.transform.localRotation = Quaternion.identity; 
+                
+                // Get downloaded texture
+                Texture2D texture = ((DownloadHandlerTexture)www.downloadHandler).texture;
+
+                // Get the first child of the instantiated button
+                Transform firstChild = instantiatedButton.transform.GetChild(0);
+
+                // Set the texture to the material of the plane
+                firstChild.GetComponent<Renderer>().material.mainTexture = texture;
+                firstChild.GetComponent<Renderer>().material.renderQueue = 3002;
+            }
+            else
+            {
+                Debug.Log("Failed to load image: " + www.error);
+            }
         }
     }
 
@@ -104,13 +156,14 @@ public class WebAPI : MonoBehaviour
                 // Check if the item contains "uid" field
                 if (result["uid"] != null)
                 {
+                    ImgURLList.Add(result["thumbnails"]["images"][0]["url"]);
+
                     // Add UID to the filtered list
                     UIDList.Add(result["uid"]);
 
                     // Add description to the description list
                     DescriptionList.Add(result["description"]);
                 }
-
             }
         }
 
