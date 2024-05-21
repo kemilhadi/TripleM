@@ -7,18 +7,15 @@
 1. Open up Main.unity within Assets/Scenes
 2. Save any changes modified
 3. Open build settings
-4. Ensure that the platform is android and all the settings is as desired/default
+4. Ensure that the platform is android and all the settings is as desired
 5. Build and run
 
 
 ## Run
 1. Setup spacial scan within physical space in the Quest3's settings
-2. Ensure that there is at least one "Table" furniture
-    - None: Add furniture and label it as "Table"
-    - Yes: Complete the scan setup
-3. Open Library
-4. Change to Unknown Source from All Application on Top Right Corner
-5. Open "Triple M"
+2. Open Library
+3. Change to Unknown Source from All Application on Top Right Corner
+4. Open "Triple M"
 
 
 ## Instructions
@@ -67,3 +64,5 @@
 - JSONDotNet
 - XR Interaction Toolkit: https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@3.0/manual/index.html
 - AR Foundations: https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@6.0/manual/index.html
+- Universal Rendering Pipeline
+
