@@ -23,7 +23,7 @@
 
 ## Instructions
 - Selecting Objects
-    - Pinch using either left or/and right hand
+    - Pinch (Connecting your thumb and index finger together) using either left or/and right hand
     - Picking up objects using both hands works too
 
 - Scaling Objects
@@ -31,19 +31,35 @@
     - Move both hands on the opposite direction to make it bigger
     - Move both hands closer to each other to make it smaller
 
-- Menu Buttons
-    - Hover/Select the chosen object using your left hand
-    - Menu buttons will appear on the right hand side
-    - To push the buttons, point your finger and press the buttons
-    - The buttons will be higlighted when it is selected
-    - Colored buttons after selecting means On, Black means off
-    - Addition: Buttons could be seen being pushed down slightly when pressed
+- "Asset" Menu
+    - All possible asset's icon will be shown on a horizontal scroll wheel 
+    - Spawn button is available
+        - Select an asset until it turns on
+        - Press the Spawn button until it turns on
+        - After a few frames the button will turn off by itself
+
+- "Buttons" Menu
+    - Consists of 4 Buttons: 
+        - Pin 
+        - Annotate
+        - Create Ruler
+        - Destroy 
+    - Buttons will turn:
+        - Blue if on
+        - Black if off
 
 - Button Actions
     - Pin: Disable physics for the chosen object
+        - Hover/Select on an object and press the button to turn on/off
     - Annotate: Displays the description of the object
+        - Hover/Select on an object and press sthe button to turn on/off
+        - To switch annotation between object either hover/select onto another without necessary action of pressing the button on/off
     - Create Ruler: Creates a ruler for the user to measure
-    - Destroy: to remove unecessary ruler/s
+        - Just press the buttons, it will turn on and off after a few frames
+    - Destroy: to remove chosen object
+        - Hover/Select on an object
+        - Destroy button will then appear
+        - After pressed the button will disappear alongside the object
 
 
 ## Dependency
