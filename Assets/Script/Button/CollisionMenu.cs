@@ -32,7 +32,10 @@ public class CollisionMenu : MonoBehaviour
 
     public void OnHoverEntered(HoverEnterEventArgs args)
     {
-        textMeshPro.text = $"{webAPI.DescriptionList[int.Parse(args.interactableObject.transform.name)]}";
+        // textMeshPro.text = $"{webAPI.DescriptionList[int.Parse(args.interactableObject.transform.name)]}";
+
+        textMeshPro.text = webAPI.UIDDD[args.interactableObject.transform.name];
+
         // annotateToggle.SetActive(true);
     }
 

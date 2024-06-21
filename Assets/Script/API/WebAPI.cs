@@ -11,6 +11,7 @@ using UnityEngine.XR.Interaction.Toolkit.Transformers;
 
 // TODO
 // CLEAN UP NESTED CODES
+// MAKE A CLASS CONSTRUCTOR FOR MODEL UID
 
 public class WebAPI : MonoBehaviour
 {
@@ -22,10 +23,11 @@ public class WebAPI : MonoBehaviour
     // fab7532b13a541e4958246de7f0a520f
     // 44e295f367b54084a83366d3da68e68c
 
+    // Declare a dictionary "id":"description"
+    public Dictionary <string, string> UIDDD = new Dictionary<string, string>();
+
     // Declare a list of strings
     private List<string> UIDList = new List<string>();
-    public List<string> DescriptionList = new List<string>();
-
     private List<string> ImgURLList = new List<string>();
 
     private bool isFinished = true;
@@ -62,13 +64,15 @@ public class WebAPI : MonoBehaviour
             //     return;
             // }
 
+            // foreach (KeyValuePair<string, string> uid in UIDDD)
+            // {
+            //     print("Key: " + uid.Key + ", Value: " + uid.Value);
+            //     DownloadModel(uid.Key);
+            // }
+
+
             StartCoroutine(LoadImage());
-
-            for (int i = 0; i < UIDList.Count; i++)
-            {
-                DownloadModel(UIDList[i], i);
-            }
-
+            
             isFinished = true;
         }
     }
@@ -76,9 +80,8 @@ public class WebAPI : MonoBehaviour
 
     private IEnumerator LoadImage()
     {
-        foreach (string url in ImgURLList)
-        {
-            UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
+        for (int i = 0; i < ImgURLList.Count; i ++) {
+            UnityWebRequest www = UnityWebRequestTexture.GetTexture(ImgURLList[i]);
             yield return www.SendWebRequest();
 
             if (www.result == UnityWebRequest.Result.Success)
@@ -86,6 +89,16 @@ public class WebAPI : MonoBehaviour
 
                 // Instantiate the prefab
                 GameObject instantiatedButton = Instantiate(img_button);
+
+                instantiatedButton.transform.name = UIDList[i];
+
+                // Get the Toggle component from the instantiated prefab
+                Toggle toggle = instantiatedButton.GetComponent<Toggle>();
+
+                // Get the ToggleGroup component from GameObject A
+                ToggleGroup toggleGroup = img_Container.GetComponent<ToggleGroup>();
+
+                toggle.group = toggleGroup;
 
                 // Set the img_Container as the parent of the plane
                 instantiatedButton.transform.SetParent(img_Container.transform);
@@ -156,20 +169,19 @@ public class WebAPI : MonoBehaviour
                 // Check if the item contains "uid" field
                 if (result["uid"] != null)
                 {
+                    UIDDD.Add(result["uid"], result["description"]);
+
                     ImgURLList.Add(result["thumbnails"]["images"][0]["url"]);
 
                     // Add UID to the filtered list
                     UIDList.Add(result["uid"]);
-
-                    // Add description to the description list
-                    DescriptionList.Add(result["description"]);
                 }
             }
         }
 
     }
 
-    private void DownloadModel(string UID, int numTrack) 
+    public void DownloadModel(string UID) 
     {
         // This first call will get the model information
         // bool enableCache = true;
@@ -188,7 +200,7 @@ public class WebAPI : MonoBehaviour
                     Transform rootNode = parent.GetChild(0).GetChild(0).GetChild(0);
 
                     // Update Name
-                    rootNode.name = numTrack.ToString();
+                    rootNode.name = UID;
 
                     // Rendering Variables
                     var renderers = rootNode.GetComponentsInChildren<Renderer>();
@@ -230,7 +242,7 @@ public class WebAPI : MonoBehaviour
                     rootNode.localScale = scale;
 
                     // Move the parent GameObject's position by 3 units on the x-axis
-                    Vector3 newPosition = parent.position + new Vector3(0f, 0f, xPos);
+                    Vector3 newPosition = parent.position + new Vector3(0f, 1f, 0f);
                     
                     // Enable
                     // Vector3 combinedPosition = showOnlyTable.tableVector + newPosition;
